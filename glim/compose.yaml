@@ -1,0 +1,17 @@
+services:
+  glim_ros:
+    image: koide3/glim_ros2:humble
+    command: ros2 run glim_ros glim_rosnode --ros-args -p config_path:=/glim/config
+    environment:
+      - DISPLAY
+      - ROS_DOMAIN_ID
+    volumes:
+      - ./config:/glim/config
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: host
+    privileged: true
+    ipc: host
+    pid: host
+
+    stdin_open: true
+    tty: true
