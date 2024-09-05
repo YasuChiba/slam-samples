@@ -19,6 +19,13 @@ def generate_launch_description():
         "lidar_config_path", default=default_lidar_config_path
     )
 
+    rviz_use = LaunchConfiguration("rviz", default=True)
+    declare_rviz_cmd = DeclareLaunchArgument(
+        "rviz", default_value="true",
+        description="Use RViz to monitor results"
+    )
+
+
     declare_xfer_format = DeclareLaunchArgument(
         "xfer_format",
         default_value="0",
@@ -51,6 +58,7 @@ def generate_launch_description():
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
+        condition=IfCondition(rviz_use),
         arguments=[
             "-d",
             os.path.join(
@@ -63,6 +71,7 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            declare_rviz_cmd,
             declare_xfer_format,
             declare_lidar_config_path,
             livox_driver,
