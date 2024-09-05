@@ -1,0 +1,28 @@
+# Ignore Python build directories
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyc.so
+
+# Ignore Python packaging artifacts
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Ignore IDE and editor files
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+
+fast-lio/workspace/install
+fast-lio/workspace/log
+fast-lio/workspace/rosbag
